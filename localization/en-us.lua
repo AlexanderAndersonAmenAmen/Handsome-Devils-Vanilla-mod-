@@ -244,6 +244,20 @@ return {
                     "{C:green}probabilities{}",
                     "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}2 in 3{C:inactive})",
                 },
+            },
+            v_hnds_extra_filling = {
+                name = 'Extra Filling',
+                text = {
+                    "{C:attention}+1{} extra card option",
+                    "in Booster Packs",
+                },
+            },
+            v_hnds_wholesale = {
+                name = 'Wholesale',
+                text = {
+                    "{C:attention}+1{} Booster Pack slot",
+                    "available in shop"
+                },
             }
         },
         Planet={
