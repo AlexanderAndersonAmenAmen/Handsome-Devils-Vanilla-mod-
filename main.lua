@@ -109,7 +109,9 @@ local files = {
       "tag_hunter",
       "hashtag_skip",
       "beginners_luck",
-      "rigged"
+      "rigged",
+      "extra_filling",
+      "wholesale"
     },
     directory = 'vouchers/'
   },
@@ -343,4 +345,14 @@ end
 
 for key, value in pairs(files) do
   load_files(key)
+end
+
+function HNDS.spawn_booster()
+  local card = Card(G.shop_booster.T.x + G.shop_booster.T.w / 2,
+    G.shop_booster.T.y, G.CARD_W * 1.27, G.CARD_H * 1.27, G.P_CARDS.empty, G.P_CENTERS[get_pack('shop_pack').key],
+    { bypass_discovery_center = true, bypass_discovery_ui = true })
+  create_shop_card_ui(card, 'Booster', G.shop_booster)
+  card.ability.booster_pos = #G.shop_booster.cards + 1
+  card:start_materialize()
+  G.shop_booster:emplace(card)
 end
