@@ -168,3 +168,31 @@ end
 '''
 match_indent = true
 times = 1
+
+# -----------------------------------
+# Wholesale
+# -----------------------------------
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''G.GAME.current_round.used_packs = G.GAME.current_round.used_packs or {}'''
+position = 'before'
+match_indent = true
+payload = '''if i == 1 and G.GAME.modifiers.hnds_boosters then for _ = 1, G.GAME.modifiers.hnds_boosters do HNDS.spawn_booster() end end'''
+
+# -----------------------------------
+# Resize Booster Pack UI for new options
+# -----------------------------------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "G.GAME.pack_choices = self.ability.choose or self.config.center.config.choose or 1"
+position = "after"
+payload = '''
+if G.GAME.extra_pocket_picks and G.GAME.extra_pocket_picks > 0 then
+  self.ability.extra = self.ability.extra + G.GAME.extra_pocket_picks
+end
+'''
+match_indent = true
